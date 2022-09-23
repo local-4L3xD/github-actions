@@ -1,0 +1,19 @@
+name: Shell Commands
+
+on: [push]
+
+jobs:
+  run-shell-command:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print possibles values
+        run: |
+          for termo in $(echo {1..14}/{1..8}/{1..64})
+            do
+              echo $termo
+            done
+      - name: multiline script
+        run: |
+          python -v
+          node -v
+          npm -v
