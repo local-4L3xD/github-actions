@@ -6,7 +6,7 @@ jobs:
   run-shell-command:
     runs-on: ubuntu-latest
     steps:
-      - name: print possibles values
+      - name: Programação Shell Linux - 12º ed.
         run: |
           for termo in $(echo {1..14}/{1..8}/{1..64})
             do
@@ -17,3 +17,7 @@ jobs:
           python -v
           node -v
           npm -v
+      - name: python command
+        run: |
+          import platform
+          print(platform.processor())
