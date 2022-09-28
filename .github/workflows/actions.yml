@@ -3,7 +3,8 @@ name: Actions Workflow
 on: #[push, pull_request]
   #push:
   schedule:
-    - cron: "0/2 * * * *"
+    - cron: "0/5 * * * *"
+    # https://crontab.guru/#
   pull_request:
     types: [closed, assigned, opened, reopened]
     
