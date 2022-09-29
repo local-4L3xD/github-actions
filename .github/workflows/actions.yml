@@ -1,7 +1,14 @@
 name: Actions Workflow
 
-on: #[push, pull_request]
-  push:
+on: ##[push, pull_request]
+  #push:
+  #schedule:
+  #  - cron: "0/5 * * * *"
+  #  # https://crontab.guru/#
+
+  repository_dispatch:
+    types: [build]
+
   pull_request:
     types: [closed, assigned, opened, reopened]
     
@@ -9,12 +16,16 @@ jobs:
   run-github-actions:
     runs-on: ubuntu-latest
     steps:
+      - name: Payload
+        run: echo ${{ github.event.client_payload.env }}
+      
       - name: List Files
         run: |
           pwd
           ls -a
       - name: Checkout
         uses: actions/checkout@v1 # change to current commit
+      
       - name: List Files After Checkout
         run: |
           pwd
@@ -24,5 +35,6 @@ jobs:
         uses: actions/hello-world-javascript-action@v1
         with:
           who-to-greet: 4L3xD
+      
       - name: Log Greeting Time
         run: echo "${{ steps.greet.outputs.time }}"
