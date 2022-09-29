@@ -32,6 +32,11 @@ on: #[push, pull_request]
       - 'feature/*' #matches features/featA, feature/featB, doesn't match feature/feat/a
       - 'feature/**'
       - '!feature/featC' #branch to ignore
+      #- '!feature/feat[E-G]' #ignore branchs featE, featF and featG
+      #- 'feature/feat[ABC]' #only featA, featB, featC
+      #- 'feature/feat[ABC]+' #featA, B or C and one other caracter
+      #- 'feature/featA?' #only featA and one other caracter
+      #- '*.jsx?' # filter a file with any name that have js extension and can have a caracter in the end of the extension
     #- branches-ignore:
     #  - null
     tags:
@@ -44,7 +49,7 @@ on: #[push, pull_request]
       - '!filename.js' #path to ignore 
     #paths-ignore:
     #  - 'docs/**'
-    
+
   #Refs: https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet
   ############################################################
 
