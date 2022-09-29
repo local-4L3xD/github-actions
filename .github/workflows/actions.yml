@@ -2,9 +2,13 @@ name: Actions Workflow
 
 on: #[push, pull_request]
   #push:
-  schedule:
-    - cron: "0/5 * * * *"
-    # https://crontab.guru/#
+  #schedule:
+  #  - cron: "0/5 * * * *"
+  #  # https://crontab.guru/#
+
+  repository_dispatch:
+    types: [build]
+
   pull_request:
     types: [closed, assigned, opened, reopened]
     
