@@ -44,6 +44,7 @@ on: #[push, pull_request]
       - '!filename.js' #path to ignore 
     #paths-ignore:
     #  - 'docs/**'
+    
   #Refs: https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet
   ############################################################
 
