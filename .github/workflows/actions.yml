@@ -1,31 +1,71 @@
 name: Actions Workflow
 
-on: ##[push, pull_request]
+on: #[push, pull_request]
+  ############################################################
   #push:
+  #pull_request:
+  #  types: [closed, assigned, opened, reopened]
+  #Refs:
+  ## https://github.com/local-4L3xD/github-actions/commit/a52ecfb636cf67959b457b1b2f55c601a1586a29
+  ## https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows
+  ############################################################
+
+  ############################################################
   #schedule:
   #  - cron: "0/5 * * * *"
-  #  # https://crontab.guru/#
+  #Refs:
+  ## https://crontab.guru/#
+  ############################################################
 
-  repository_dispatch:
-    types: [build]
+  ############################################################
+  #repository_dispatch:
+  #  types: [build]
+  #Refs:
+  ## https://docs.github.com/en/rest/repos/repos#create-a-repository-dispatch-event
+  ## https://github.com/settings/tokens
+  ############################################################
 
-  pull_request:
-    types: [closed, assigned, opened, reopened]
-    
+  ############################################################
+  push:
+    branches:
+      - master
+      - 'feature/*' #matches features/featA, feature/featB, doesn't match feature/feat/a
+      - 'feature/**'
+      - '!feature/featC' #branch to ignore
+    #- branches-ignore:
+    #  - null
+    tags:
+      - v1.*
+    #tags-ignore:
+    #  - ""
+    paths:
+      #- '..'
+      - '**.js'
+      - '!filename.js' #path to ignore 
+    #paths-ignore:
+    #  - 'docs/**'
+  #Refs: https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet
+  ############################################################
+
 jobs:
   run-github-actions:
     runs-on: ubuntu-latest
     steps:
-      - name: Payload
-        run: echo ${{ github.event.client_payload.env }}
-      
+
+      ############################################################
+      #- name: Payload
+      #  run: echo ${{ github.event.client_payload.env }}
+      ############################################################
+
       - name: List Files
         run: |
           pwd
           ls -a
+
       - name: Checkout
         uses: actions/checkout@v1 # change to current commit
-      
+      #Ref: https://github.com/actions/checkout#usage
+
       - name: List Files After Checkout
         run: |
           pwd
