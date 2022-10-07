@@ -5,6 +5,7 @@ on: [push]
 jobs:
   run-shell-command:
     runs-on: ubuntu-latest
+    #timeout-minutes: 360 #condition to de job be canceled
     steps:
       - name: Programação Shell Linux - 12º ed.
         run: |
@@ -12,6 +13,8 @@ jobs:
             do
               echo $termo
             done
+        #timeout-minutes: 0
+        #continue-on-error: true
       - name: multiline script
         run: |
           node -v
