@@ -25,7 +25,10 @@ jobs:
         uses: docker://technosophos/slack-notify
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_MESSAGE: '{"post": "Teste!"}'
+          #SLACK_MESSAGE: '{"post": "Teste!"}'
+        run: |
+          curl -X POST -H 'Content-type: application/json'
+          -- data '{"post":"Hello world!"}' ${SLACK_WEBHOOK}
 
   node-docker:
     runs-on: ubuntu-latest
