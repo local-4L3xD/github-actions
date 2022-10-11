@@ -22,7 +22,7 @@ jobs:
           args: "Some string as argument"
 
       - name: Send a slack message
-        uses: docker://technosophos/slack-notify
+        #uses: docker://technosophos/slack-notify
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           #SLACK_MESSAGE: '{"post": "Teste!"}'
